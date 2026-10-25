@@ -1,5 +1,7 @@
 # NovaShop AI Customer Support Assistant
 
+Repository: `ai-customer-support-assistant`.
+
 A policy-grounded customer support demo built with FastAPI, Gemini, and persistent ChromaDB. It retrieves relevant excerpts from NovaShop's refund and shipping policies, asks Gemini to answer from those excerpts, and returns source citations. If a question is outside the policy topics represented in the current corpus, the service responds with **Insufficient Context** rather than guessing.
 
 This is a portfolio/demo application, not a production customer-support service.
