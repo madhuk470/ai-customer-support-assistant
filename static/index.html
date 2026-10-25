@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#f7f9fc" />
+    <meta name="description" content="NovaShop customer support assistant, grounded in store policy documents." />
+    <title>NovaShop Support</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="/static/styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar" id="sidebar" aria-label="Main navigation">
+        <a class="brand" href="/" aria-label="NovaShop Support home">
+          <span class="brand-mark" aria-hidden="true"><span></span><span></span><span></span></span>
+          <span class="brand-copy"><strong>nova<span>shop</span></strong><small>SUPPORT DESK</small></span>
+        </a>
+
+        <button class="new-chat-button" id="new-chat" type="button">
+          <span class="button-plus" aria-hidden="true">＋</span><span>New chat</span>
+          <kbd>⌘ K</kbd>
+        </button>
+
+        <div class="nav-label">WORKSPACE</div>
+        <nav class="primary-nav">
+          <button class="nav-item active" id="nav-chat" type="button" aria-current="page">
+            <span class="nav-icon" aria-hidden="true">◉</span><span>Chat</span>
+          </button>
+          <button class="nav-item" id="nav-history" type="button">
+            <span class="nav-icon history-icon" aria-hidden="true">◷</span><span>Chat history</span>
+            <span class="nav-chevron" aria-hidden="true">›</span>
+          </button>
+          <button class="nav-item" id="nav-knowledge" type="button">
+            <span class="nav-icon book-icon" aria-hidden="true">▤</span><span>Knowledge base</span>
+          </button>
+        </nav>
+
+        <div class="sidebar-bottom">
+          <div class="sidebar-help-card">
+            <span class="help-sparkle" aria-hidden="true">✦</span>
+            <strong>Need a hand?</strong>
+            <p>Ask about returns, delivery, and more.</p>
+            <button type="button" id="help-link">How it works <span aria-hidden="true">↗</span></button>
+          </div>
+          <div class="user-profile">
+            <div class="avatar user-avatar">NS</div>
+            <div class="profile-copy"><strong>NovaShop Team</strong><span>Support workspace</span></div>
+            <button class="more-button" type="button" aria-label="Workspace options">•••</button>
+          </div>
+        </div>
+      </aside>
+
+      <main class="main-area">
+        <header class="topbar">
+          <div class="topbar-left">
+            <button id="mobile-menu" class="mobile-menu" type="button" aria-label="Open navigation">☰</button>
+            <div class="breadcrumb"><span>Workspace</span><span class="crumb-divider">/</span><strong>Customer support</strong></div>
+          </div>
+          <div class="topbar-actions">
+            <div class="system-status"><span class="status-dot"></span>All systems operational</div>
+            <button class="icon-button" type="button" id="info-toggle" aria-label="About this assistant" title="About this assistant">i</button>
+          </div>
+        </header>
+
+        <div class="content-grid">
+          <section class="chat-panel" aria-label="Customer support chat">
+            <div class="conversation-scroll" id="conversation-scroll">
+              <div class="welcome-state" id="welcome-state">
+                <div class="welcome-orb" aria-hidden="true">
+                  <span class="orb-core">✦</span><span class="orb-satellite satellite-one"></span><span class="orb-satellite satellite-two"></span>
+                </div>
+                <div class="eyebrow"><span class="eyebrow-line"></span> NOVASHOP AI SUPPORT <span class="eyebrow-line"></span></div>
+                <h1>How can I help<br class="mobile-break" /> you today?</h1>
+                <p class="welcome-subtitle">Get clear answers about your NovaShop order, grounded in our official policies.</p>
+
+                <div class="suggestions-heading"><span>POPULAR QUESTIONS</span><span class="suggestions-divider"></span></div>
+                <div class="suggestion-grid" id="suggestion-grid">
+                  <button class="suggestion-card" type="button" data-question="How many days do I have to return an order?">
+                    <span class="suggestion-icon return-icon">↩</span><span><strong>Returns &amp; refunds</strong><small>How long do I have to return?</small></span><span class="suggestion-arrow">↗</span>
+                  </button>
+                  <button class="suggestion-card" type="button" data-question="How long does standard delivery take?">
+                    <span class="suggestion-icon delivery-icon">⌁</span><span><strong>Shipping &amp; delivery</strong><small>When will my order arrive?</small></span><span class="suggestion-arrow">↗</span>
+                  </button>
+                  <button class="suggestion-card" type="button" data-question="What should I do if I receive a damaged product?">
+                    <span class="suggestion-icon damaged-icon">◇</span><span><strong>Damaged items</strong><small>What should I do next?</small></span><span class="suggestion-arrow">↗</span>
+                  </button>
+                  <button class="suggestion-card" type="button" data-question="Does NovaShop sell cars?">
+                    <span class="suggestion-icon general-icon">?</span><span><strong>Ask anything</strong><small>Does NovaShop sell cars?</small></span><span class="suggestion-arrow">↗</span>
+                  </button>
+                </div>
+                <div class="welcome-footnote"><span class="shield-icon">✓</span> Answers sourced from NovaShop policy documents</div>
+              </div>
+              <div class="message-list" id="message-list" aria-live="polite"></div>
+            </div>
+
+            <div class="composer-wrap">
+              <form class="composer" id="chat-form">
+                <label class="sr-only" for="question-input">Ask NovaShop Support a question</label>
+                <textarea id="question-input" rows="1" maxlength="1000" placeholder="Ask a question about your order…" autocomplete="off"></textarea>
+                <div class="composer-bottom">
+                  <div class="composer-hint"><span class="sparkle-mini">✦</span> Answers are grounded in NovaShop policies</div>
+                  <div class="composer-controls"><span class="enter-hint">↵ to send</span><button class="send-button" id="send-button" type="submit"><span>Send</span><span class="send-arrow" aria-hidden="true">↑</span></button></div>
+                </div>
+              </form>
+              <p class="disclaimer">NovaShop AI can make mistakes. Check important details against the cited policy.</p>
+            </div>
+          </section>
+
+          <aside class="insight-panel" id="insight-panel" aria-label="Assistant information">
+            <div class="insight-header"><div><span class="insight-kicker">YOUR ASSISTANT</span><h2>Policy guide</h2></div><span class="insight-icon">✦</span></div>
+            <div class="assistant-card">
+              <div class="assistant-card-top"><div class="assistant-avatar"><span>✦</span><i></i></div><span class="online-label"><i></i> Online</span></div>
+              <h3>NovaShop Support</h3>
+              <p>Your helpful guide for a smoother shopping experience.</p>
+              <div class="assistant-divider"></div>
+              <div class="assistant-stat-row"><span>Knowledge sources</span><strong>02 documents</strong></div>
+              <div class="assistant-stat-row"><span>Response style</span><strong>Policy-grounded</strong></div>
+            </div>
+
+            <div class="panel-section"><div class="panel-section-title"><span>WHAT I CAN HELP WITH</span><span class="tiny-info">i</span></div>
+              <div class="topic-row"><span class="topic-dot blue"></span><span>Returns &amp; refunds</span><span class="topic-count">06</span></div>
+              <div class="topic-row"><span class="topic-dot violet"></span><span>Shipping &amp; delivery</span><span class="topic-count">06</span></div>
+              <div class="topic-row"><span class="topic-dot orange"></span><span>Damaged products</span><span class="topic-count">02</span></div>
+            </div>
+
+            <div class="source-note"><div class="source-note-icon">▤</div><div><strong>Answers you can trust</strong><p>Every response is based on NovaShop's official policy documents, with sources included.</p><button id="view-sources" type="button">View knowledge base <span>→</span></button></div></div>
+            <div class="privacy-note"><span aria-hidden="true">♧</span> Your conversations stay private.</div>
+          </aside>
+        </div>
+      </main>
+    </div>
+
+    <div class="modal-backdrop" id="modal-backdrop" hidden>
+      <section class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+        <div class="modal-header"><div><span class="insight-kicker" id="modal-kicker">NOVASHOP SUPPORT</span><h2 id="modal-title"></h2></div><button id="modal-close" class="icon-button close-button" type="button" aria-label="Close">×</button></div>
+        <div id="modal-content" class="modal-content"></div>
+      </section>
+    </div>
+    <div class="mobile-scrim" id="mobile-scrim"></div>
+    <script src="/static/app.js" defer></script>
+  </body>
+</html>
